@@ -26,3 +26,14 @@ end
 group :production do
   gem 'pg'
 end
+
+
+# gem 'bootswatch-rails'
+# gem 'bootstrap-sass', '~> 3.3.6'
+
+gem 'httparty'
+gem 'pg'
+gem 'json'
+gem 'google-analytics-rails'
+gem 'js_cookie_rails'
+gem "font-awesome-rails"

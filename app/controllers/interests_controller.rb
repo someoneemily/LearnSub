@@ -1,6 +1,6 @@
 class InterestsController < ApplicationController
   before_action :set_interest, only: [:show, :edit, :update, :destroy]
-
+  skip_before_action :verify_authenticity_token
   # GET /interests
   # GET /interests.json
   def index
@@ -73,6 +73,6 @@ class InterestsController < ApplicationController
     def interest_params
       puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
       puts params
-      params.require(:interest).permit(:topics, :time, :interest)
+      params.require(:interest).permit(:topics, :time)
     end
 end

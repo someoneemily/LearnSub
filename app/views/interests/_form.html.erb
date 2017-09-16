@@ -11,18 +11,19 @@
     </div>
   <% end %>
 
+
 <label for="interest">Interests (select multiple by holding holding Cmd):</label>
-      <select multiple class="form-control" id="interest">
+      <select multiple class="form-control" id="interest" name="topics">
         <option>Interest 1</option>
         <option>Interest 2</option>
         <option>Interest 3</option>
         <option>Interest 4</option>
         <option>Interest 5</option>
       </select>
-  <div class="field">
-    <%= f.label :topics %><br>
-    <%= f.text_field :topics %>
-  </div>
+  <!-- <div class="field">
+    <%#= f.label :topics %><br>
+    <%#= f.text_field :topics %>
+  </div> -->
   <div class="field">
     <%= f.label :time %><br>
     <%= f.number_field :time %>
