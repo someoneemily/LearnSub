@@ -27,6 +27,9 @@ group :production do
   gem 'pg'
 end
 
+gem 'pry'
+gem 'pry-rails'
+
 
 # gem 'bootswatch-rails'
 # gem 'bootstrap-sass', '~> 3.3.6'

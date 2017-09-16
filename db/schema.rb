@@ -16,7 +16,6 @@ ActiveRecord::Schema.define(version: 20170916205729) do
   create_table "interests", force: :cascade do |t|
     t.string   "topics"
     t.integer  "time"
-    t.text     "interest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
