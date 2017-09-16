@@ -20,14 +20,18 @@
         <option>Interest 4</option>
         <option>Interest 5</option>
       </select>
-  <!-- <div class="field">
-    <%#= f.label :topics %><br>
-    <%#= f.text_field :topics %>
-  </div> -->
-  <div class="field">
-    <%= f.label :time %><br>
-    <%= f.number_field :time %>
-  </div>
+
+    
+    
+<div class="dropdown">
+  <label for="time">Amount of time I can dedicate per day (in min):</label> 
+    <select class="custom-select" id="time" name="time">
+      <% for i in (1..100) %>
+        <option><%= i %></option>
+      <% end %>
+    </select>
+</div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -15,8 +15,6 @@ class InterestsController < ApplicationController
   # GET /interests/new
   def new
     @interest = Interest.new
-    puts '#################################'
-    puts params
   end
 
   # GET /interests/1/edit
@@ -26,7 +24,9 @@ class InterestsController < ApplicationController
   # POST /interests
   # POST /interests.json
   def create
-    @interest = Interest.new(interest_params)
+    @interest = Interest.new
+    @interest.topics = params[:topics]
+    @interest.time = params[:time]
 
     respond_to do |format|
       if @interest.save
@@ -71,8 +71,6 @@ class InterestsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def interest_params
-      puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
-      puts params
-      params.require(:interest).permit(:topics, :time)
+      params.require(:interest).permit()
     end
 end
