@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Q:</strong>
+  <%= @search.q %>
+</p>
+
+<p>
+  <strong>Time:</strong>
+  <%= @search.time %>
+</p>
+
+<%= link_to 'Edit', edit_search_path(@search) %> |
+<%= link_to 'Back', searches_path %>
