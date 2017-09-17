@@ -1,29 +1,31 @@
-<p id="notice"><%= notice %></p>
+<% if current_user %>
+  <h1>Listing Interests</h1>
 
-<h1>Listing Interests</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Topics</th>
-      <th>Time</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @interests.each do |interest| %>
+  <table class="table table-striped">
+    <thead>
       <tr>
-        <td><%= interest.topics %></td>
-        <td><%= interest.time %></td>
-        <td><%= link_to 'Show', interest %></td>
-        <td><%= link_to 'Edit', edit_interest_path(interest) %></td>
-        <td><%= link_to 'Destroy', interest, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Topics</th>
+        <th>Time</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
+    <tbody>
+      <% @interests.each do |interest| %>
+        <tr>
+          <td><%= interest.topics %></td>
+          <td><%= interest.time %> minute</td>
+          <td><%= link_to 'Show', interest %></td>
+          <!-- <td><#%= link_to 'Edit', edit_interest_path(interest) %></td> -->
+          <td><%= link_to 'Destroy', interest, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<%= link_to 'New Interest', new_interest_path %>
+  <br>
+
+  <%= link_to 'New Interest', new_interest_path %>
+<% else %>
+  <h1>Make everyday count. Make TODAY count and sign in to get started on your path to expertise.</h1>
+<% end %>
