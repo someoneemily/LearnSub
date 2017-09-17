@@ -1,28 +1,40 @@
 
 <center>
-    <div style="max-width:660px">
-        <h1>Keyword search</h1>
-        <div class="panel panel-primary">
-          <div class="panel-heading">
-            <!-- <h3 class="panel-title">Panel primary</h3> -->
-          </div>
-          <div class="panel-body">
-                <%= form_tag("/searches", method: "get", id:"searchform", class:"form-horizontal") do %>
-                <p>
-                    <%= label_tag(:q, "Example search: Artificial Intelligence",:class=>"control-label") %>
-                    <div class="form-group">
-                        <div class="col-lg-8">
-                            <%= text_field_tag(:q,params[:q],:class=>"form-control padme", :placeholder=>"keywords") %>
-                        </div>
-                        <div class="col-lg-2">
-                            <%= text_field_tag(:time,params[:time],:class=>"form-control padme",:placeholder=>"time") %>
-                        </div>
-                        <%= submit_tag("Search",:class=>"btn btn-primary padme") %>
+<div style="max-width:660px">
+    <h1>Keyword search</h1>
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <!-- <h3 class="panel-title">Panel primary</h3> -->
+      </div>
+      <div class="panel-body">
+            <%= form_tag("/searches", method: "get", id:"searchform", class:"form-horizontal") do %>
+            <p>
+                <%= label_tag(:q, "Example search: Artificial Intelligence",:class=>"control-label") %>
+                <div class="form-group">
+                    <div class="col-lg-8">
+                        <% if @error %>
+                        <p> Hmmmm.... Make sure you key word is general and searchable on Wikipedia </p>
+                        <% end %>
+                        <%= text_field_tag(:q,params[:q],:class=>"form-control padme", :placeholder=>"keywords") %>
                     </div>
-                </p>
-              <% end %>
-
-            </div>
-          </div>
+                    <div class="col-lg-2">
+                        <%= number_field_tag(:time,@time,:class=>"form-control padme",:placeholder=>"time") %>
+                    </div>
+                    <%= submit_tag("Search",:class=>"btn btn-primary padme") %>
+                </div>
+            </p>
+          <% end %>
         </div>
-      </center>
+      </div>
+    </div>
+</center>
+
+<% if @shouldshow %>
+
+<div>
+  <h3> Your Query: <%= @query %> in <%= @time.to_i - @allowedTime.to_i %> minutes </h3>
+  <% for l in @links %>
+    <p> <%= link_to(l[0],l[1]) %> (<%= l[2] %> Minutes) </p>
+  <% end %>
+</div>
+<% end %>
