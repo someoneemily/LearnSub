@@ -29,6 +29,7 @@ end
 
 gem 'pry'
 gem 'pry-rails'
+gem 'devise'
 
 
 # gem 'bootswatch-rails'

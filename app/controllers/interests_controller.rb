@@ -4,7 +4,7 @@ class InterestsController < ApplicationController
   # GET /interests
   # GET /interests.json
   def index
-    @interests = Interest.all
+    @interests = Interest.all.where(user_id: current_user)
   end
 
   # GET /interests/1
@@ -27,7 +27,7 @@ class InterestsController < ApplicationController
     @interest = Interest.new
     @interest.topics = params[:topics]
     @interest.time = params[:time]
-
+    @interest.user_id = current_user.id
     respond_to do |format|
       if @interest.save
         format.html { redirect_to @interest, notice: 'Interest was successfully created.' }
@@ -42,9 +42,6 @@ class InterestsController < ApplicationController
   # PATCH/PUT /interests/1
   # PATCH/PUT /interests/1.json
   def update
-    puts "%%%%%%%%%%%%%%%%%%%%%%%%"
-    puts params
-    binding.pry
     respond_to do |format|
       if @interest.update(interest_params)
         format.html { redirect_to @interest, notice: 'Interest was successfully updated.' }
@@ -74,10 +71,6 @@ class InterestsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def interest_params
-      puts "$$$$$$$$$$$$$$$$$$$$$$$$$"
-      puts params
-      binding.pry
-
       params.require(:interest).permit(:topics, :time)
     end
 end
