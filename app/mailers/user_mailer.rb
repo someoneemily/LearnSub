@@ -12,9 +12,8 @@ class UserMailer < ApplicationMailer
   		duration = 'medium'
   	end
     @data = `python3 untitled.py --q '"#{interest.topics}"' --duration '#{duration}'`
-    binding.pry
     @data = @data.strip
     mail( :to => user_email,
-    :subject => 'Your Daily List of Enlightenment' )
+    :subject => 'Your Daily List of Enlightenment')
   end
 end

@@ -39,7 +39,7 @@ def youtube_search(options):
   # matching videos, channels, and playlists.
   for search_result in search_response.get("items", []):
     if search_result["id"]["kind"] == "youtube#video":
-      videos.append("%s" %(search_result["id"]["videoId"]))
+      videos.append("%s,%s" %(search_result["id"]["videoId"],search_result["snippet"]["title"]))
     elif search_result["id"]["kind"] == "youtube#channel":
       channels.append("%s (%s)" % (search_result["snippet"]["title"],
                                    search_result["id"]["channelId"]))
@@ -47,19 +47,30 @@ def youtube_search(options):
       playlists.append("%s (%s)" % (search_result["snippet"]["title"],
                                     search_result["id"]["playlistId"]))
 
+  def videos_list_by_id(service, **kwargs):
+    # kwargs = remove_empty_kwargs(**kwargs) # See full sample for function
+    results = service.videos().list(
+      **kwargs
+    ).execute()
+    return results
+    # print(results)
 
-  link="www.youtube.com/watch?v=%s"%videos[0]
-  print(link)
-  return link
+  for vid in videos:
+    details = videos_list_by_id(youtube,
+      part='snippet,contentDetails',
+    id=vid)
+    time = details["items"][0]["contentDetails"]["duration"].split("T")[1].split("M")[0]
+    link="https://www.youtube.com/watch?v=%s"%vid
+    print (link + "," + time)
+  # return link + "," +  time
   # print ("Channels:\n", "\n".join(channels), "\n")
   # print ("Playlists:\n", "\n".join(playlists), "\n")
 
 
 if __name__ == "__main__":
-
   argparser.add_argument("--q", help="Search term", default="Machine Learning")
 
-  argparser.add_argument("--max-results", help="Max results", default=1)
+  argparser.add_argument("--max-results", help="Max results", default=3)
   argparser.add_argument("--type", help="type", default="video")
 
 
