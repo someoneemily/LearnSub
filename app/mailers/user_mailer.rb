@@ -1,5 +1,5 @@
 class UserMailer < ApplicationMailer
-  default :from => 'from_zeroto_pro@example.com'
+  default :from => 'minutesofinterest@reddolution.com'
 
   def send_daily_email(user_email, interest)
   	@time = interest.time
