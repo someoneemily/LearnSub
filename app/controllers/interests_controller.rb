@@ -46,7 +46,9 @@ class InterestsController < ApplicationController
   # PATCH/PUT /interests/1.json
   def update
     respond_to do |format|
-      if @interest.update(interest_params)
+      @interest.topics = params[:topics]
+      @interest.time = params[:time]
+      if @interest.save
         format.html { redirect_to @interest, notice: 'Interest was successfully updated.' }
         format.json { render :show, status: :ok, location: @interest }
       else
