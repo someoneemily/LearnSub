@@ -12,7 +12,10 @@ class UserMailer < ApplicationMailer
   		duration = 'medium'
   	end
     @allowedTime = @time
+    puts user_email
+    puts "__________"
     query(interest.topics)
+    puts @links
     # @data = `python3 untitled.py --q '"#{interest.topics}"' --duration '#{duration}'`
     # @data = @data.strip
     mail( :to => user_email,
@@ -57,14 +60,12 @@ class UserMailer < ApplicationMailer
         query = query.split("(")[0]
       end
       puts query
-      if @time <= 4
+      if @time <= 10
     		duration = 'short'
-    	elsif @time >= 20
-    		duration = 'long'
     	else
     		duration = 'medium'
     	end
-      @data = `python3 untitled.py --q "#{query}" --duration '#{duration}'`
+      @data = `python3 untitled.py --q '"#{query}"' --duration '#{duration}'`
       @data = @data.strip.split("\n")
       @links = []
       for d in @data
@@ -84,6 +85,7 @@ class UserMailer < ApplicationMailer
         #### break
       end
       @links = randomElements(@links)
+      puts @links
       li = []
       for realL in @links
         time = realL[2].to_i
@@ -100,7 +102,7 @@ class UserMailer < ApplicationMailer
     y = []
     x = x.shuffle
     for e in x
-      if rand(10) > 6
+      if rand(10) > 2
         y.push(e)
       end
     end
