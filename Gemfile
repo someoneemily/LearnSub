@@ -29,6 +29,8 @@ end
 
 gem 'pry'
 gem 'pry-rails'
+gem 'devise'
+gem 'whenever', :require => false
 
 
 # gem 'bootswatch-rails'
