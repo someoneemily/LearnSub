@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 20170917071722) do
   create_table "interests", force: :cascade do |t|
     t.string   "topics"
     t.integer  "time"
+    t.text     "interest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "user_id"
@@ -41,7 +42,6 @@ ActiveRecord::Schema.define(version: 20170917071722) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.integer  "user_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

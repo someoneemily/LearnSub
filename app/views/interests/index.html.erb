@@ -14,7 +14,7 @@
       <% @interests.each do |interest| %>
         <tr>
           <td><%= interest.topics %></td>
-          <td><%= interest.time %> minute</td>
+          <td><%= interest.time %> minutes</td>
           <td><%= link_to 'Show', interest %></td>
           <!-- <td><#%= link_to 'Edit', edit_interest_path(interest) %></td> -->
           <td><%= link_to 'Destroy', interest, method: :delete, data: { confirm: 'Are you sure?' } %></td>

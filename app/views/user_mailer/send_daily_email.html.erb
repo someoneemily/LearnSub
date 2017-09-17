@@ -4,7 +4,9 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    You have 10 minutes today! Here's what you can do:
-    <a href="<%= @data %>">The video of minions</a>
+    You have <%= @time - @allowedTime %> minutes today! Here's what you can do: <br/>
+    <% for link in @links %>
+      <a href="<%= link[1] %>"><%= link[0] %> (<%= link[2] %> mins)</a> <br/>
+    <% end %>
   </body>
 </html>
