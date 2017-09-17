@@ -161,7 +161,7 @@ class SearchesController < ApplicationController
       y = []
       x = x.shuffle
       for e in x
-        if rand(10) > 6
+        if rand(10) > 2
           y.push(e)
         end
       end
