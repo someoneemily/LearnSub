@@ -5,6 +5,9 @@ class InterestsController < ApplicationController
   # GET /interests.json
   def index
     @interests = Interest.all.where(user_id: current_user)
+    if !current_user
+      render :search
+    end
   end
 
   # GET /interests/1

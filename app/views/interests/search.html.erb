@@ -1,7 +1,7 @@
 
 <center>
+  <h1>Make everyday count. Make TODAY count and sign in to get started on your path to expertise.</h1>
 <div style="max-width:660px">
-    <h1>Keyword search</h1>
     <div class="panel panel-primary">
       <div class="panel-heading">
         <!-- <h3 class="panel-title">Panel primary</h3> -->
@@ -18,7 +18,7 @@
                         <%= text_field_tag(:q,params[:q],:class=>"form-control padme", :placeholder=>"keywords") %>
                     </div>
                     <div class="col-lg-2">
-                        <%= number_field_tag(:time,@time,:class=>"form-control padme",:placeholder=>"time") %>
+                        <%= number_field_tag(:time,10,:class=>"form-control padme",:placeholder=>"time") %>
                     </div>
                     <%= submit_tag("Search",:class=>"btn btn-primary padme") %>
                 </div>
@@ -32,11 +32,9 @@
 <% if @shouldshow %>
 
 <div>
-  <center>
   <h3> Your Query: <%= @query %> in <%= @time.to_i - @allowedTime.to_i %> minutes </h3>
   <% for l in @links %>
     <p> <%= link_to(l[0],l[1]) %> (<%= l[2] %> Minutes) </p>
   <% end %>
-</center>
 </div>
 <% end %>
